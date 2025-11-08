@@ -126,8 +126,7 @@ class ProjectResource extends Resource
                         ($record->progress_percentage >= 75 ? 'info' :
                         ($record->progress_percentage >= 50 ? 'warning' :
                         ($record->progress_percentage >= 25 ? 'gray' : 'danger')))
-                    )
-                    ->sortable(),
+                    ),
                 TextColumn::make('start_date')
                     ->date('d/m/Y')
                     ->sortable(),
@@ -183,7 +182,8 @@ class ProjectResource extends Resource
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function getRelations(): array
